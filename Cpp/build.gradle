@@ -1,0 +1,44 @@
+plugins {
+    id "cpp"
+    id "edu.wpi.first.GradleRIO" version "2023.2.1"
+}
+
+// Disable local cache, as it won't have the cross artifact necessary
+wpi.maven.useLocal = false
+
+// Set to true to run simulation in debug mode
+wpi.cpp.debugSimulation = false
+
+def appName = "TestApplication"
+
+nativeUtils.withCrossLinuxArm64()
+//nativeUtils.withCrossLinuxArm32() // Uncomment to build for arm32. targetPlatform below also needs to be fixed
+
+model {
+    components {
+        "${appName}"(NativeExecutableSpec) {
+            //targetPlatform wpi.platforms.desktop // Uncomment to build on whatever the native platform currently is
+            targetPlatform wpi.platforms.linuxarm64
+            //targetPlatform wpi.platforms.linuxarm32 // Uncomment to build for arm32
+
+            sources.cpp {
+                source {
+                    srcDir 'src/main/cpp'
+                    include '**/*.cpp', '**/*.cc'
+                }
+                exportedHeaders {
+                    srcDir 'src/main/include'
+                }
+            }
+
+            // Enable run tasks for this component
+            wpi.cpp.enableExternalTasks(it)
+
+            wpi.cpp.deps.wpilibStatic(it)
+        }
+    }
+}
+
+wrapper {
+    gradleVersion = '7.5.1'
+}
