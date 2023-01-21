@@ -39,6 +39,7 @@ dependencies {
 }
 
 shadowJar {
+    archiveBaseName = "TestApplication"
     archiveVersion = ""
     exclude("module-info.class")
     archiveClassifier.set(wpilibTools.currentPlatform.platformName)
