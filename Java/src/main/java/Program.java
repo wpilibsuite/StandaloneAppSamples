@@ -5,6 +5,10 @@ import edu.wpi.first.util.CombinedRuntimeLoader;
 
 import java.io.IOException;
 
+import org.opencv.core.Core;
+import org.opencv.core.Mat;
+
+import edu.wpi.first.cscore.CameraServerCvJNI;
 import edu.wpi.first.cscore.CameraServerJNI;
 import edu.wpi.first.math.WPIMathJNI;
 import edu.wpi.first.util.WPIUtilJNI;
@@ -18,9 +22,11 @@ public class Program {
         WPIUtilJNI.Helper.setExtractOnStaticLoad(false);
         WPIMathJNI.Helper.setExtractOnStaticLoad(false);
         CameraServerJNI.Helper.setExtractOnStaticLoad(false);
+        CameraServerCvJNI.Helper.setExtractOnStaticLoad(false);
 
-        CombinedRuntimeLoader.loadLibraries(Program.class, "wpiutiljni", "wpimathjni", "ntcorejni", "cscorejnicvstatic");
+        CombinedRuntimeLoader.loadLibraries(Program.class, "wpiutiljni", "wpimathjni", "ntcorejni", Core.NATIVE_LIBRARY_NAME, "cscorejni");
 
         var inst = NetworkTableInstance.getDefault();
+        Mat m = new Mat();
     }
 }
