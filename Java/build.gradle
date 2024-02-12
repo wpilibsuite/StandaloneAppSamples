@@ -2,7 +2,7 @@ plugins {
     id "java"
     id 'application'
     id 'com.github.johnrengelman.shadow' version '8.1.1'
-    id "edu.wpi.first.GradleRIO" version "2024.1.1-beta-2"
+    id "edu.wpi.first.GradleRIO" version "2024.2.1"
     id 'edu.wpi.first.WpilibTools' version '1.3.0'
 }
 
@@ -52,5 +52,5 @@ shadowJar {
 }
 
 wrapper {
-    gradleVersion = '8.4'
+    gradleVersion = '8.5'
 }
