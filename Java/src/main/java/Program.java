@@ -8,9 +8,9 @@ import java.io.IOException;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 
-import edu.wpi.first.cscore.CameraServerCvJNI;
 import edu.wpi.first.cscore.CameraServerJNI;
-import edu.wpi.first.math.WPIMathJNI;
+import edu.wpi.first.cscore.OpenCvLoader;
+import edu.wpi.first.math.jni.EigenJNI;
 import edu.wpi.first.util.WPIUtilJNI;
 
 /**
@@ -20,9 +20,9 @@ public class Program {
     public static void main(String[] args) throws IOException {
         NetworkTablesJNI.Helper.setExtractOnStaticLoad(false);
         WPIUtilJNI.Helper.setExtractOnStaticLoad(false);
-        WPIMathJNI.Helper.setExtractOnStaticLoad(false);
+        EigenJNI.Helper.setExtractOnStaticLoad(false);
         CameraServerJNI.Helper.setExtractOnStaticLoad(false);
-        CameraServerCvJNI.Helper.setExtractOnStaticLoad(false);
+        OpenCvLoader.Helper.setExtractOnStaticLoad(false);
 
         CombinedRuntimeLoader.loadLibraries(Program.class, "wpiutiljni", "wpimathjni", "ntcorejni", Core.NATIVE_LIBRARY_NAME, "cscorejni");
 
