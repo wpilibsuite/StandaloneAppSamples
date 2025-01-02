@@ -11,15 +11,15 @@ wpi.cpp.debugSimulation = false
 
 def appName = "TestApplication"
 
-nativeUtils.withCrossLinuxArm64()
-//nativeUtils.withCrossLinuxArm32() // Uncomment to build for arm32. targetPlatform below also needs to be fixed
+//nativeUtils.withCrossLinuxArm64() // Uncomment to build for Linux Arm 64. targetPlatform below also needs to be fixed
+//nativeUtils.withCrossLinuxArm32() // Uncomment to build for Linux Arm 32. targetPlatform below also needs to be fixed
 
 model {
     components {
         "${appName}"(NativeExecutableSpec) {
-            //targetPlatform wpi.platforms.desktop // Uncomment to build on whatever the native platform currently is
-            targetPlatform wpi.platforms.linuxarm64
-            //targetPlatform wpi.platforms.linuxarm32 // Uncomment to build for arm32
+            targetPlatform wpi.platforms.desktop // Uncomment to build on whatever the native platform currently is
+            //targetPlatform wpi.platforms.linuxarm64 // Uncomment to build for Linux Arm 64
+            //targetPlatform wpi.platforms.linuxarm32 // Uncomment to build for Linux Arm 32
 
             sources.cpp {
                 source {
